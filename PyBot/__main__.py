@@ -6,7 +6,7 @@ import traceback
 
 import aiohttp
 from aiohttp import web
-# import cachetools
+import cachetools
 from gidgethub import aiohttp as gh_aiohttp
 from gidgethub import routing
 from gidgethub import sansio

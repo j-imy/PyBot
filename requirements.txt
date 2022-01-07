@@ -1,2 +1,4 @@
 aiohttp
 gidgethub
+sentry_sdk
+cachetools
