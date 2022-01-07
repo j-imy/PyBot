@@ -11,11 +11,11 @@ from gidgethub import aiohttp as gh_aiohttp
 from gidgethub import routing
 from gidgethub import sansio
 
-from . import issue_greeter
+from . import issue_greeter, pr_review_labeler
 
 import sentry_sdk
 
-router = routing.Router(issue_greeter.router)
+router = routing.Router(issue_greeter.router, pr_review_labeler.router)
 cache = cachetools.LRUCache(maxsize=500)
 
 sentry_sdk.init(os.environ.get("SENTRY_DSN"))
