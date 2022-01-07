@@ -9,6 +9,8 @@ router = routing.Router()
 async def opened_pr(event, gh, *arg, **kwargs):
     """Mark new PRs as needing a review."""
     pull_reques = event.data["pull_request"]["labels"]
+    author = event.data['pull_request']['user']['login']
+
     ur = event.data['pull_request']['comments_url']
 
 
