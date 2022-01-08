@@ -9,7 +9,7 @@ router = routing.Router()
 
 LABEL1 = 'review_needed_pr' # label name
 
-@router.register("issues", action="opened")
+@router.register("pull_request", action="opened")
 async def issue_opened_event(event, gh, *args, **kwargs):
     label = event.data['pull_request']['labels_url']
 
