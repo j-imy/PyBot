@@ -11,7 +11,7 @@ router = routing.Router()
 
 @router.register("issue_comment", action="created")
 async def issue__comment_create_event(event, gh, *args, **kwargs):
-    url = event.data['issue_comment']['comment']['reactions']
+    url = event.datva['issue_comment']['comment']['reactions']
 
 
     message = 1
