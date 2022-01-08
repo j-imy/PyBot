@@ -15,9 +15,9 @@ async def opened_pr(event, gh, *arg, **kwargs):
 
     # pull_reques = event.data["labels_url"]
     # pull_reques1 = event.data["pull_request"]["labels_url"]
-    pull_reques4 = event.data["pull_request"]["labels"]
-    pull_reques2 = event.data["pull_request"]["head"]["repo"]["labels_url"]
-    pull_reques3 = event.data["pull_request"]["base"]["repo"]["labels_url"]
+    # pull_reques4 = event.data["pull_request"]["labels"]
+    # pull_reques2 = event.data["pull_request"]["head"]["repo"]["labels_url"]
+    # pull_reques3 = event.data["pull_request"]["base"]["repo"]["labels_url"]
 
     author = event.data['pull_request']['user']['login']
 
@@ -40,32 +40,32 @@ async def opened_pr(event, gh, *arg, **kwargs):
     #     })
 
 
-    messag2 = f"[pull_request][head][repo][labels_url] {pull_reques2}"
-    await gh.post(ur, data={
-        'body': messag2,
-        })
+    # messag2 = f"[pull_request][head][repo][labels_url] {pull_reques2}"
+    # await gh.post(ur, data={
+    #     'body': messag2,
+    #     })
 
-    messag3 = f"[pull_request][base][repo][labels_url] {pull_reques3}"
-    await gh.post(ur, data={
-        'body': messag3,
-        })
+    # messag3 = f"[pull_request][base][repo][labels_url] {pull_reques3}"
+    # await gh.post(ur, data={
+    #     'body': messag3,
+    #     })
 
-    messag4 = f"[pull_request][labels] {pull_reques4}"
-    await gh.post(ur, data={
-        'body': messag4,
-        })
+    # messag4 = f"[pull_request][labels] {pull_reques4}"
+    # await gh.post(ur, data={
+    #     'body': messag4,
+    #     })
 
-    messag5 = f"[pull_request][comments url] {ur}"
-    await gh.post(ur, data={
-        'body': messag5,
-        })
-
-
+    # messag5 = f"[pull_request][comments url] {ur}"
+    # await gh.post(ur, data={
+    #     'body': messag5,
+    #     })
 
 
-    await gh.post(pull_reques2, data=[LABEL])
-    await gh.post(pull_reques3, data=[LABEL])
-    await gh.post(pull_reques4, data=[LABEL])
+
+
+    # await gh.post(pull_reques2, data=[LABEL])
+    # await gh.post(pull_reques3, data=[LABEL])
+    # await gh.post(pull_reques4, data=[LABEL])
 
 
 
