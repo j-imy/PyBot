@@ -11,6 +11,9 @@ LABEL1 = 'review_needed_pr' # label name
 
 @router.register("pull_request", action="opened")
 async def issue_opened_event(event, gh, *args, **kwargs):
-    label = event.data['pull_request']['labels']
+    is_url = event.data['pull_request']['issue_url']
+    suffix = '/labels{/name}'
+    label_url = is_url + suffix
 
-    await gh.post(label, data=[LABEL1]) #event post for key label
+
+    await gh.post(label_url, data=[LABEL1]) #event post for key label
