@@ -1,16 +1,9 @@
-import enum
 import sys
 from gidgethub import routing, sansio
 from gidgethub import aiohttp as gh_aiohttp
 
 NEWS_NEXT_DIR = "Misc/NEWS.d/next/"
 
-
-@enum.unique
-class StatusState(enum.Enum):
-    SUCCESS = "success"
-    ERROR = "error"
-    FAILURE = "failure"
 
 
 def create_status(context, state, *, description=None, target_url=None):

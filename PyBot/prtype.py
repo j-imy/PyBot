@@ -1,33 +1,20 @@
 """Label a pull request based on its type."""
 from gidgethub import routing, sansio
 from gidgethub import aiohttp as gh_aiohttp
-
-import enum
 import pathlib
 
 from . import util
 
-LABEL_PREFIX = "type"
-
 router = routing.Router()
 @router.register("pull_request", action="opened")
 
-@enum.unique
-class Category(enum.Enum):
-    """Category of Pull Request."""
-    bugfix = f"{LABEL_PREFIX}-bugfix"
-    documentation = f"{LABEL_PREFIX}-documentation"
-    enhancement = f"{LABEL_PREFIX}-enhancement"
-    performance = f"{LABEL_PREFIX}-performance"
-    security = f"{LABEL_PREFIX}-security"
-    tests = f"{LABEL_PREFIX}-tests"
 
 
 async def add_category(gh, issue, category):
     """Apply this type label if there aren't any type labels on the PR."""
     if any(label.startswith("type") for label in util.labels(issue)):
         return
-    await gh.post(issue["labels_url"], data=[category.value])
+    await gh.post(issue["labels_url"], data=[category])
 
 
 async def classify_by_filepaths(gh, pull_request, filenames):
@@ -51,7 +38,7 @@ async def classify_by_filepaths(gh, pull_request, filenames):
         else:
             return
     if tests:
-        await add_category(gh, issue, Category.tests)
+        await add_category(gh, issue, 'tests')
     elif docs:
-        await add_category(gh, issue, Category.documentation)
+        await add_category(gh, issue, 'documentation')
     return
