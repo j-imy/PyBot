@@ -1,6 +1,6 @@
 # PyBot
 
-### A Python Bot For Github Automation
+### A Python Bot For Github Automation(Deployed on heroku)
 
 
 
