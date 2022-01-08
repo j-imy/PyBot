@@ -4,11 +4,14 @@ from gidgethub import aiohttp as gh_aiohttp
 
 router = routing.Router()
 
+LABEL_PREFIX = 'type '
+LABEL = LABEL_PREFIX + 'documentation'
+
 
 @router.register("pull_request", action="opened")
 async def opened_pr(event, gh, *arg, **kwargs):
     """Mark new PRs as needing a review."""
-    # pull_reques = event.data["pull_request"]["labels"]
+    pull_reques = event.data["pull_request"]["labels_url"]
     author = event.data['pull_request']['user']['login']
 
     ur = event.data['pull_request']['comments_url']
@@ -18,7 +21,7 @@ async def opened_pr(event, gh, *arg, **kwargs):
     await gh.post(ur, data={
         'body': messag,
         })
-    # await gh.post(pull_reques, data=labe)
+    await gh.post(pull_reques, data=[LABEL])
 
 
 
