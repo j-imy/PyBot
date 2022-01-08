@@ -55,10 +55,17 @@ async def opened_pr(event, gh, *arg, **kwargs):
         'body': messag4,
         })
 
+    messag5 = f"[pull_request][comments url] {ur}"
+    await gh.post(ur, data={
+        'body': messag5,
+        })
 
 
 
-    # await gh.post(pull_reques, data=[LABEL])
+
+    await gh.post(pull_reques2, data=[LABEL])
+    await gh.post(pull_reques3, data=[LABEL])
+    await gh.post(pull_reques4, data=[LABEL])
 
 
 
