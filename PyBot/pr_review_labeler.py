@@ -11,7 +11,14 @@ LABEL = LABEL_PREFIX + 'documentation'
 @router.register("pull_request", action="opened")
 async def opened_pr(event, gh, *arg, **kwargs):
     """Mark new PRs as needing a review."""
-    pull_reques = event.data["labels_url"]
+    
+
+    # pull_reques = event.data["labels_url"]
+    # pull_reques1 = event.data["pull_request"]["labels_url"]
+    pull_reques4 = event.data["pull_request"]["labels"]
+    pull_reques2 = event.data["pull_request"]["head"]["repo"]["labels_url"]
+    pull_reques3 = event.data["pull_request"]["base"]["repo"]["labels_url"]
+
     author = event.data['pull_request']['user']['login']
 
     ur = event.data['pull_request']['comments_url']
@@ -21,8 +28,37 @@ async def opened_pr(event, gh, *arg, **kwargs):
     await gh.post(ur, data={
         'body': messag,
         })
-    await gh.post(pull_reques, data=[LABEL])
 
+    # messag1 = f"labels_url {pull_reques}"
+    # await gh.post(ur, data={
+    #     'body': messag1,
+    #     })
+
+    # messag33 = f"pull_requests - labels_url {pull_reques1}"
+    # await gh.post(ur, data={
+    #     'body': messag33,
+    #     })
+
+
+    messag2 = f"[pull_request][head][repo][labels_url] {pull_reques2}"
+    await gh.post(ur, data={
+        'body': messag2,
+        })
+
+    messag3 = f"[pull_request][base][repo][labels_url] {pull_reques3}"
+    await gh.post(ur, data={
+        'body': messag3,
+        })
+
+    messag4 = f"[pull_request][labels] {pull_reques4}"
+    await gh.post(ur, data={
+        'body': messag4,
+        })
+
+
+
+
+    # await gh.post(pull_reques, data=[LABEL])
 
 
 
