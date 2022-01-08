@@ -29,6 +29,13 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vasu-1/PyBot)
 
+- Create a Heroku project
+- Set the `GH_TOKEN` environment variable to the GitHub oauth token to be used by the bot
+- Set up the Heroku project to get the code for the bot
+- Add `webhook` to the repository in which you want to use the bot
+- Set the `GH_SECRET` of webhook in environment variable in heroku
+- Deploy on `main` branch and see the `magic` !!
+ 
 
 ### Project Maintainers :-
 
