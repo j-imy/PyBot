@@ -6,8 +6,8 @@ router = routing.Router()
 
 ############################ Issue Greetings #############################################
 
-LABEL_PREFIX = 'type '
-LABEL = LABEL_PREFIX + 'documentation'
+# LABEL_PREFIX = 'type '
+LABEL = 'review_needed'
 
 @router.register("issues", action="opened")
 async def issue_opened_event(event, gh, *args, **kwargs):
@@ -17,7 +17,7 @@ async def issue_opened_event(event, gh, *args, **kwargs):
     avatar = event.data['issue']['user']['avatar_url']
     label = event.data['issue']['labels_url']
 
-    message = f"label url : {label} <br><table><tbody><tr><td>Thanks for opening the issue @{author}! I will look into it ASAP!\n Till then show your love by staring my repos 😋.</td><td> <img alt='Coding' width='100px' height='100px' src='{avatar}'></td></tr></tbody></table>"
+    message = f"<br><table><tbody><tr><td>Thanks for opening the issue @{author}! I will look into it ASAP!\n Till then show your love by staring my repos 😋.</td><td> <img alt='Coding' width='100px' height='100px' src='{avatar}'></td></tr></tbody></table>"
     await gh.post(url, data={
         'body': message,
         })
