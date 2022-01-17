@@ -1,4 +1,4 @@
-# PyBot
+# pygithub-bot
 
 ### A Python Bot For Github Automation(Deployed on heroku)
 
